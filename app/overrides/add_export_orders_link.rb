@@ -5,6 +5,7 @@ Deface::Override.new(
   :text => "
     <% if params[:q][:created_at_gt].present? && params[:q][:created_at_lt].present? %>
       <%= link_to Spree.t('export.export_paid_ready_to_ship_as_csv', :default => 'Export Paid & Ready to Ship as CSV'), spree.export_csv_path(params[:q]), class: 'button', id: 'export_csv' %>
+      <%= link_to Spree.t('export.export_all_in_window', :default => 'Export All In Window'), spree.export_csv_path(params[:q].merge({:all_in_window => true})), class: 'button', id: 'export_csv_in_window' %>
     <% end %>
   ")
 
