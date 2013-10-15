@@ -8,6 +8,6 @@ Spree::Admin::OrdersController.class_eval do
     scope = scope.paid_and_ready_to_ship unless (params.has_key?(:all_in_window) && params[:all_in_window] == 'true')
 
     @orders = scope
-    send_data @orders.export_csv.encode(SpreeExport.output_encoding, :invalid => :replace, :replace => '?'), :filename => csv_filename(:name => 'orders', :date_start => created_at_gt, :date_end => created_at_lt)
+    send_data @orders.export_csv.encode(SpreeExport.output_encoding, :invalid => :replace, :undef => :replace, :replace => '?'), :filename => csv_filename(:name => 'orders', :date_start => created_at_gt, :date_end => created_at_lt)
   end
 end
